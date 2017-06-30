@@ -18,6 +18,7 @@ website/node_modules
 *.log
 *.bak
 *~
+.\#*
 .*.swp
 .idea
 *.iml

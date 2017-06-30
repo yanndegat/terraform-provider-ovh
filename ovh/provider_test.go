@@ -65,6 +65,11 @@ func testAccPreCheck(t *testing.T) {
 		t.Fatal("OVH_PUBLIC_CLOUD must be set for acceptance tests")
 	}
 
+	v = os.Getenv("OVH_PUBLIC_CLOUD")
+	if v == "" {
+		t.Fatal("OVH_PUBLIC_CLOUD must be set for acceptance tests")
+	}
+
 	if testAccOVHClient == nil {
 		config := Config{
 			Endpoint:          os.Getenv("OVH_ENDPOINT"),

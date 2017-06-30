@@ -152,3 +152,28 @@ type PublicCloudServiceStatusResponse struct {
 func (s *PublicCloudServiceStatusResponse) String() string {
 	return fmt.Sprintf("%s: %s", s.Name, s.Status)
 }
+
+type DomainZoneRecordOpts struct {
+	Target    string `json:"target"`
+	Ttl       int    `json:"ttl"`
+	FieldType string `json:"fieldType"`
+	SubDomain string `json:"subDomain"`
+}
+
+type DomainZoneRecordResponse struct {
+	Id        int    `json:"id"`
+	ZoneName  string `json:"zone"`
+	Target    string `json:"target"`
+	Ttl       int    `json:"ttl"`
+	FieldType string `json:"fieldType"`
+	SubDomain string `json:"subDomain"`
+}
+
+func (r *DomainZoneRecordResponse) String() string {
+	return fmt.Sprintf(
+		"zone: %s, id: %d, target: %s, type: %s",
+		r.ZoneName,
+		r.Id,
+		r.Target,
+		r.FieldType)
+}

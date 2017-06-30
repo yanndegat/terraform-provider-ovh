@@ -41,6 +41,7 @@ func Provider() terraform.ResourceProvider {
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
+			"ovh_domain_zone_dnsrecord":              resourceDomainZoneDnsRecord(),
 			"ovh_publiccloud_private_network":        resourcePublicCloudPrivateNetwork(),
 			"ovh_publiccloud_private_network_subnet": resourcePublicCloudPrivateNetworkSubnet(),
 			"ovh_publiccloud_user":                   resourcePublicCloudUser(),
