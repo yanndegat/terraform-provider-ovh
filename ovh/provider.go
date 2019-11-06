@@ -45,6 +45,7 @@ func Provider() terraform.ResourceProvider {
 			"ovh_cloud_regions":              dataSourcePublicCloudRegions(),
 			"ovh_domain_zone":                dataSourceDomainZone(),
 			"ovh_dedicated_servers":          dataSourceDedicatedServers(),
+			"ovh_dedicated_server":           dataSourceDedicatedServer(),
 			"ovh_iploadbalancing":            dataSourceIpLoadbalancing(),
 			"ovh_me_paymentmean_bankaccount": dataSourceMePaymentmeanBankaccount(),
 			"ovh_me_paymentmean_creditcard":  dataSourceMePaymentmeanCreditcard(),
