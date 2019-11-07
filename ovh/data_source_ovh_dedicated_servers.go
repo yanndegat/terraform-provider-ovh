@@ -13,7 +13,7 @@ func dataSourceDedicatedServers() *schema.Resource {
 		Read: dataSourceDedicatedServersRead,
 		Schema: map[string]*schema.Schema{
 			// Computed
-			"available_services": {
+			"result": {
 				Type:     schema.TypeList,
 				Computed: true,
 				Elem: &schema.Schema{
@@ -38,6 +38,6 @@ func dataSourceDedicatedServersRead(d *schema.ResourceData, meta interface{}) er
 	sort.Strings(ids)
 
 	d.SetId(hashcode.Strings(ids))
-	d.Set("available_services", ids)
+	d.Set("result", ids)
 	return nil
 }

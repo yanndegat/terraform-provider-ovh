@@ -31,6 +31,6 @@ const testAccDedicatedServersDatasourceConfig_Basic = `
 data "ovh_dedicated_servers" "servers" {}
 
 output result {
-   value = tolist(data.ovh_dedicated_servers.servers.available_services)[0]
+   value = data.ovh_dedicated_servers.servers.result[0]
 }
 `

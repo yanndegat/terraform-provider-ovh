@@ -24,4 +24,4 @@ This datasource takes no argument.
 
 The following attributes are exported:
 
-* `available_services` - The list of dedicated servers IDs associated with your OVH Account.
+* `result` - The list of dedicated servers IDs associated with your OVH Account.
