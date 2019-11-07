@@ -41,14 +41,15 @@ func Provider() terraform.ResourceProvider {
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{
-			"ovh_cloud_region":               dataSourcePublicCloudRegion(),
-			"ovh_cloud_regions":              dataSourcePublicCloudRegions(),
-			"ovh_domain_zone":                dataSourceDomainZone(),
-			"ovh_dedicated_servers":          dataSourceDedicatedServers(),
-			"ovh_dedicated_server":           dataSourceDedicatedServer(),
-			"ovh_iploadbalancing":            dataSourceIpLoadbalancing(),
-			"ovh_me_paymentmean_bankaccount": dataSourceMePaymentmeanBankaccount(),
-			"ovh_me_paymentmean_creditcard":  dataSourceMePaymentmeanCreditcard(),
+			"ovh_cloud_region":                     dataSourcePublicCloudRegion(),
+			"ovh_cloud_regions":                    dataSourcePublicCloudRegions(),
+			"ovh_domain_zone":                      dataSourceDomainZone(),
+			"ovh_dedicated_installation_templates": dataSourceDedicatedInstallationTemplates(),
+			"ovh_dedicated_servers":                dataSourceDedicatedServers(),
+			"ovh_dedicated_server":                 dataSourceDedicatedServer(),
+			"ovh_iploadbalancing":                  dataSourceIpLoadbalancing(),
+			"ovh_me_paymentmean_bankaccount":       dataSourceMePaymentmeanBankaccount(),
+			"ovh_me_paymentmean_creditcard":        dataSourceMePaymentmeanCreditcard(),
 
 			// Legacy naming schema (publiccloud)
 			"ovh_publiccloud_region": deprecated(dataSourcePublicCloudRegion(),
