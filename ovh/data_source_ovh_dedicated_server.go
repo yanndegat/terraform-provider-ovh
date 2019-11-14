@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 func dataSourceDedicatedServer() *schema.Resource {
@@ -202,22 +202,13 @@ func dataSourceDedicatedServerRead(d *schema.ResourceData, meta interface{}) err
 		return fmt.Errorf("Error reading Dedicated Server VNIs: %s", err)
 	}
 
-	mapvnis := []map[string]interface{}{}
+	mapvnis := make([]map[string]interface{}, len(vnis))
 	enabledVrackVnis := []string{}
 	enabledVrackAggregationVnis := []string{}
 	enabledPublicVnis := []string{}
 
-	for _, vni := range vnis {
-		v := map[string]interface{}{
-			"name":    vni.Name,
-			"enabled": vni.Enabled,
-			"mode":    vni.Mode,
-			"uuid":    vni.Uuid,
-			"vrack":   vni.Vrack,
-			"nics":    vni.NICs,
-		}
-
-		mapvnis = append(mapvnis, v)
+	for i, vni := range vnis {
+		mapvnis[i] = vni.ToMap()
 
 		if vni.Enabled {
 			switch vni.Mode {

@@ -3,31 +3,21 @@ package ovh
 import (
 	"testing"
 
-	"github.com/hashicorp/terraform/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 )
 
 func TestAccDedicatedInstallationTemplatesDataSource_basic(t *testing.T) {
 	resource.Test(t, resource.TestCase{
-		PreCheck:  func() { testAccPreCheckCommon(t) },
+		PreCheck:  func() { testAccPreCheckCredentials(t) },
 		Providers: testAccProviders,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccDedicatedInstallationTemplatesDatasourceConfig_Basic,
-				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckOutput(
-						"result",
-						"true",
-					),
+				Config: "data ovh_dedicated_installation_templates templates {}",
+				Check: resource.TestCheckResourceAttrSet(
+					"data.ovh_dedicated_installation_templates.templates",
+					"result.#",
 				),
 			},
 		},
 	})
 }
-
-const testAccDedicatedInstallationTemplatesDatasourceConfig_Basic = `
-data "ovh_dedicated_installation_templates" "templates" {}
-
-output result {
-   value = tostring(length(data.ovh_dedicated_installation_templates.templates.result) > 0)
-}
-`

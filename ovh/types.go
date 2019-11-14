@@ -152,3 +152,16 @@ type PublicCloudServiceStatusResponse struct {
 func (s *PublicCloudServiceStatusResponse) String() string {
 	return fmt.Sprintf("%s: %s", s.Name, s.Status)
 }
+
+type UnitAndValue struct {
+	Unit  string `json:"unit"`
+	Value int    `json:"value"`
+}
+
+func (v UnitAndValue) ToMap() map[string]interface{} {
+	obj := make(map[string]interface{})
+	obj["unit"] = v.Unit
+	obj["value"] = v.Value
+
+	return obj
+}

@@ -8,7 +8,7 @@ description: |-
 
 # ovh_me_installation_templates
 
-Use this data source to get the list of  dedicated servers installation templates associated with your OVH Account.
+Use this data source to get the list of dedicated servers installation templates associated with your OVH Account.
 
 ## Example Usage
 

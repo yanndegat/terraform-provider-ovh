@@ -38,7 +38,7 @@ type DedicatedServerVNI struct {
 	NICs       []string `json:"networkInterfaceController"`
 	ServerName string   `json:"serverName"`
 	Uuid       string   `json:"uuid"`
-	Vrack      string   `json:"vrack"`
+	Vrack      *string  `json:"vrack,omitempty"`
 }
 
 func (vni DedicatedServerVNI) String() string {
@@ -49,4 +49,19 @@ func (vni DedicatedServerVNI) String() string {
 		vni.Mode,
 		vni.Enabled,
 	)
+}
+func (v DedicatedServerVNI) ToMap() map[string]interface{} {
+	obj := make(map[string]interface{})
+	obj["enabled"] = v.Enabled
+	obj["mode"] = v.Mode
+	obj["name"] = v.Name
+	obj["nics"] = v.NICs
+	obj["server_name"] = v.ServerName
+	obj["uuid"] = v.Uuid
+
+	if v.Vrack != nil {
+		obj["vrack"] = *v.Vrack
+	}
+
+	return obj
 }
