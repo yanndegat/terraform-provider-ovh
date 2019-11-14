@@ -17,6 +17,7 @@ func TestAccMeInstallationTemplatesDataSource_basic(t *testing.T) {
 	config := fmt.Sprintf(
 		testAccMeInstallationTemplatesDatasourceConfig_Basic,
 		templateName,
+		templateName,
 	)
 
 	resource.Test(t, resource.TestCase{
@@ -38,14 +39,10 @@ func TestAccMeInstallationTemplatesDataSource_basic(t *testing.T) {
 						"data.ovh_me_installation_templates.templates",
 						"result.#",
 					),
-					// resource.TestCheckResourceAttr(
-					// 	fmt.Sprintf(
-					// 		"data.ovh_me_installation_template.template[\\\"%s\\\"]",
-					// 		templateName,
-					// 	),
-					// 	"template_name",
-					// 	templateName,
-					// ),
+					resource.TestCheckOutput(
+						"check",
+						"true",
+					),
 				),
 			},
 		},
@@ -53,10 +50,6 @@ func TestAccMeInstallationTemplatesDataSource_basic(t *testing.T) {
 }
 
 const testAccMeInstallationTemplatesDatasourceConfig_presetup = `
-terraform {
-  required_version = ">= 0.12"
-}
-
 resource "ovh_me_installation_template" "template" {
   base_template_name = "centos7_64"
   template_name      = "%s"
@@ -65,10 +58,6 @@ resource "ovh_me_installation_template" "template" {
 `
 
 const testAccMeInstallationTemplatesDatasourceConfig_Basic = `
-terraform {
-  required_version = ">= 0.12"
-}
-
 resource "ovh_me_installation_template" "template" {
   base_template_name = "centos7_64"
   template_name      = "%s"
@@ -77,8 +66,7 @@ resource "ovh_me_installation_template" "template" {
 
 data "ovh_me_installation_templates" "templates" {}
 
-data "ovh_me_installation_template" "template" {
-  for_each           = toset(data.ovh_me_installation_templates.templates.result)
-  template_name      = each.value
+output check {
+  value = tostring(contains(data.ovh_me_installation_templates.templates.result, "%s"))
 }
 `

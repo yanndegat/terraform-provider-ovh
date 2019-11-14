@@ -108,6 +108,13 @@ func testAccPreCheckMePaymentMean(t *testing.T) {
 	checkEnv(t, "OVH_TEST_BANKACCOUNT")
 }
 
+// Checks that the environment variables needed for the /dedicated/server tests
+// are set.
+func testAccPreCheckDedicatedServer(t *testing.T) {
+	testAccPreCheckCredentials(t)
+	checkEnv(t, "OVH_DEDICATED_SERVER_SERVICE_NAME")
+}
+
 func testAccCheckVRackExists(t *testing.T) {
 	type vrackResponse struct {
 		Name        string `json:"name"`
