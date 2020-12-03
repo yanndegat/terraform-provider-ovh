@@ -197,7 +197,7 @@ func testAccPreCheckDedicatedCeph(t *testing.T) {
 	checkEnvOrSkip(t, "OVH_DEDICATED_CEPH")
 }
 
-func testAccPreCheckCloudDBEnterprise(t *testing.T) {
+func testAccPreCheckCloudDBEnterpriseCluster(t *testing.T) {
 	testAccPreCheckCredentials(t)
 	checkEnvOrSkip(t, "OVH_CLOUDDB_ENTERPRISE")
 }

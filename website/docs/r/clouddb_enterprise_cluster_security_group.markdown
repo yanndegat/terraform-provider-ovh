@@ -1,7 +1,7 @@
 ---
 layout: "ovh"
-page_title: "OVH: ovh_enterprise_cloud_db_security_group"
-sidebar_current: "docs-ovh-resource-enterprise-cloud-db-security-group"
+page_title: "OVH: ovh_enterprise_clouddb_cluster_security_group"
+sidebar_current: "docs-ovh-resource-enterprise-clouddb-cluster-security-group"
 description: |-
   Creates a new Security Group for an Enterprise Cloud DB.
 ---
@@ -13,12 +13,12 @@ Add a new Security Group in an Enterprise Cloud DB
 ## Example Usage
 
 ```hcl
-data "ovh_enterprise_cloud_db" "db" {
+data "ovh_clouddb_enterprise_cluster" "db" {
 	cluster_id = "%s"
 }
 	
-resource "ovh_enterprise_cloud_db_security_group" "sg" {
-  cluster_id = data.ovh_enterprise_cloud_db.db.id
+resource "ovh_clouddb_enterprise_cluster_security_group" "sg" {
+  cluster_id = data.ovh_clouddb_enterprise_cluster.db.id
   name = "example"
 }
 ```

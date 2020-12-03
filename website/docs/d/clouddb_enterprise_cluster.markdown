@@ -1,7 +1,7 @@
 ---
 layout: "ovh"
 page_title: "OVH: Enterprise Cloud DB"
-sidebar_current: "docs-ovh-datasource-enterprise-cloud-db-x"
+sidebar_current: "docs-ovh-datasource-clouddb-enterprise-cluster-x"
 description: |-
   Get information & status of an Enterprise Cloud DB Instance
 ---
@@ -13,7 +13,7 @@ Use this data source to retrieve information about an Enterprise Cloud DB Instan
 ## Example Usage
 
 ```hcl
-data "ovh_clouddb_enterprise" "my-db" {
+data "ovh_clouddb_enterprise_cluster" "my-db" {
    cluster_id = "XXXXXX"
 }
 ```

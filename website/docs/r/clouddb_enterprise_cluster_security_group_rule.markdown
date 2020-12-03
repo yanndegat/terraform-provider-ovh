@@ -1,7 +1,7 @@
 ---
 layout: "ovh"
-page_title: "OVH: ovh_enterprise_cloud_db_security_group_rule"
-sidebar_current: "docs-ovh-resource-enterprise-cloud-db-security-group-rule"
+page_title: "OVH: ovh_clouddb_enterprise_cluster_security_group_rule"
+sidebar_current: "docs-ovh-resource-clouddb-enterprise-cluster-security-group-rule"
 description: |-
   Add a new rule in a Security Group for an Enterprise Cloud DB.
 ---
@@ -13,19 +13,19 @@ Add a new rule in an Enterprise Cloud DB Security Group
 ## Example Usage
 
 ```hcl
-data "ovh_enterprise_cloud_db" "db" {
+data "ovh_clouddb_enterprise_cluster" "db" {
 	cluster_id = "%s"
 }
 	
-resource "ovh_enterprise_cloud_db_security_group" "sg" {
-  cluster_id = data.ovh_enterprise_cloud_db.db.id
+resource "ovh_clouddb_enterprise_cluster_security_group" "sg" {
+  cluster_id = data.ovh_clouddb_enterprise_cluster.db.id
   name = "example"
 }
 
 resource "ovh_enterprise_cloud_db_security_group_rule" "rule" {
-  cluster_id = data.ovh_enterprise_cloud_db.db.id
-  security_group_id = ovh_enterprise_cloud_db_security_group.sg.id
-  source = "10.0.0.0/8"
+  cluster_id        = data.ovh_clouddb_enterprise_cluster.db.id
+  security_group_id = ovh_clouddb_enterprise_cluster_security_group.sg.id
+  source            = "10.0.0.0/8"
 }
 ```
 
